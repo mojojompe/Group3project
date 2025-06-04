@@ -86,14 +86,26 @@ function setupNavbar() {
 
 // Set active link based on current page
 function setActiveLink() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const currentPath = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.navbar-links a');
+    const currentPath = window.location.pathname;
+    
+    // Special case for index.html or root path
+    if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
+        const homeLink = document.querySelector('.navbar-links a[href="index.html"], .navbar-links a[href="/"]');
+        if (homeLink) {
+            homeLink.classList.add('active');
+        }
+        return;
+    }
+    
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
+        const linkPath = link.getAttribute('href');
+        // Remove active class from all links first
+        link.classList.remove('active');
+        
+        // Check if the link's href matches the current page
+        if (currentPath.endsWith(linkPath)) {
             link.classList.add('active');
-        } else {
-            link.classList.remove('active');
         }
     });
 }

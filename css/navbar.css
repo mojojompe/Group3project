@@ -10,7 +10,6 @@
   font-family: 'Manrope', sans-serif;
   position: relative;
   z-index: 1000;
-  border-bottom: 1px solid #E5E8EB;
   box-sizing: border-box;
   width: 100%;
 }
@@ -80,6 +79,31 @@
   color: #54D12B;
 }
 
+/* Active link style */
+.navbar-links a.active {
+  color: #54D12B;
+  position: relative;
+  font-weight: 600;
+}
+
+.navbar-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background-color: #54D12B;
+  border-radius: 1px;
+}
+
+/* Active state for join button */
+.navbar-links a.join-us-btn.active {
+  background-color: #43a922;
+  color: #000 !important;
+  box-shadow: 0 0 0 2px #43a922;
+}
+
 .join-us-btn {
   background-color: #54D12B;
   color: #000 !important;
@@ -103,8 +127,8 @@
   display: none;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: none;
   border: none;
   cursor: pointer;

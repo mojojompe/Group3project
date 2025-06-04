@@ -4,14 +4,11 @@ function loadNavbar() {
     fetch('../components/navbar.html')
         .then(response => response.text())
         .then(html => {
-            // Inject navbar HTML
             document.querySelector('header').outerHTML = html;
             
-            // Initialize navbar functionality
             setupNavbar();
             setActiveLink();
             
-            // Add Font Awesome for icons
             const fontAwesome = document.createElement('link');
             fontAwesome.rel = 'stylesheet';
             fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
@@ -23,19 +20,17 @@ function loadNavbar() {
 }
 
 
-// Setup responsive navbar
 function setupNavbar() {
     const navbar = document.querySelector('.navbar');
     const navbarLinks = document.querySelector('.navbar-links');
     let hamburger = document.querySelector('.hamburger');
 
-    // Create hamburger if not present
     if (!hamburger) {
         hamburger = document.createElement('button');
         hamburger.className = 'hamburger';
         hamburger.setAttribute('aria-label', 'Toggle navigation');
         hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        hamburger.innerHTML = '<img src="images/Menu.svg" alt="Menu" style="width:32px;height:32px;display:block;">';
         navbar.insertBefore(hamburger, navbarLinks);
     }
 
@@ -51,7 +46,6 @@ function setupNavbar() {
         toggleMenu();
     });
 
-    // Close menu on link click (mobile)
     navbarLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 900) {
@@ -62,7 +56,6 @@ function setupNavbar() {
         });
     });
 
-    // Close menu on outside click
     document.addEventListener('click', (e) => {
         if (window.innerWidth > 900) return;
         if (!navbar.contains(e.target)) {
@@ -105,7 +98,6 @@ function setActiveLink() {
     });
 }
 
-// Load footer dynamically
 function loadFooter() {
     fetch('components/footer.html')
         .then(response => response.text())
@@ -118,7 +110,6 @@ function loadFooter() {
         });
 }
 
-// Initialize navbar and footer when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadNavbar();
     loadFooter();

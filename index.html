@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,36 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Tech Group - Home</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- Navbar specific CSS -->
+    <link rel="stylesheet" href="components/navbar.css">
+    <!-- Font Awesome for icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header will be loaded by JavaScript -->
-    <header>
-        <!-- Navbar will be injected here -->
-    </header>
-
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <span class="navbar-icon"><i class="fas fa-university"></i></span>
+        <span class="navbar-title">Campus Tech Group</span>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="#" class="join-us-btn">Join Us</a>
+    </nav>
     <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Welcome to Campus Tech Group</h2>
-                <p>Empowering students through technology and innovation</p>
-                <a href="#about" class="btn">Learn More</a>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About Our Tech Club</h2>
-                <p>We are a group of passionate students dedicated to exploring and mastering technology.</p>
-            </div>
-        </section>
-    </main>
-
-
-    <!-- Footer will be loaded by JavaScript -->
-    <footer>
-        <!-- Footer content will be injected here -->
-    </footer>
-
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Empowering Students Through Technology</h1>
+          <p>Join a vibrant community of tech enthusiasts, innovators, and problem-solvers. Explore cutting-edge technologies, collaborate on exciting projects, and shape the future of tech on campus.</p>
+          <a href="#" class="hero-btn">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
     <script src="js/main.js"></script>
+    <div id="footer-placeholder"></div>
 </body>
 </html>

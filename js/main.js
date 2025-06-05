@@ -4,15 +4,29 @@ function loadNavbar() {
     fetch('../components/navbar.html')
         .then(response => response.text())
         .then(html => {
-            document.querySelector('header').outerHTML = html;
+            // Create a temporary container to hold the navbar HTML
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
             
-            setupNavbar();
-            setActiveLink();
-            
-            const fontAwesome = document.createElement('link');
-            fontAwesome.rel = 'stylesheet';
-            fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
-            document.head.appendChild(fontAwesome);
+            // Insert the navbar into the header
+            const header = document.querySelector('header');
+            if (header) {
+                header.outerHTML = temp.innerHTML;
+                
+                // Initialize navbar functionality
+                setupNavbar();
+                
+                // Add Font Awesome
+                if (!document.querySelector('link[href*="font-awesome"]')) {
+                    const fontAwesome = document.createElement('link');
+                    fontAwesome.rel = 'stylesheet';
+                    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+                    document.head.appendChild(fontAwesome);
+                }
+                
+                // Set active link after a small delay to ensure DOM is ready
+                setTimeout(setActiveLink, 50);
+            }
         })
         .catch(error => {
             console.error('Error loading navbar:', error);
@@ -86,25 +100,51 @@ function setupNavbar() {
 
 // Set active link based on current page
 function setActiveLink() {
-    const navLinks = document.querySelectorAll('.navbar-links a');
+    const navLinks = document.querySelectorAll('.navbar-links a:not(.join-us-btn)');
     const currentPath = window.location.pathname;
+    let currentPage = currentPath.split('/').pop() || 'index.html';
     
-    // Special case for index.html or root path
-    if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
-        const homeLink = document.querySelector('.navbar-links a[href="index.html"], .navbar-links a[href="/"]');
-        if (homeLink) {
-            homeLink.classList.add('active');
-        }
+    // Remove active class from all links first
+    navLinks.forEach(link => link.classList.remove('active'));
+    
+    // Special case for home page (root or index.html)
+    if (currentPage === '' || currentPage.toLowerCase() === 'index.html') {
+        const homeLinks = document.querySelectorAll('.navbar-links a[href="index.html" i], .navbar-links a[href="/" i], .navbar-links a[href="./" i]');
+        homeLinks.forEach(link => link.classList.add('active'));
         return;
     }
     
+    // Normalize current page name for comparison (lowercase and remove .html if present without it in the URL)
+    const currentPageLower = currentPage.toLowerCase();
+    const currentPageNoExt = currentPageLower.endsWith('.html') ? currentPageLower.slice(0, -5) : currentPageLower;
+    
+    // Check each link against current page
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        // Remove active class from all links first
-        link.classList.remove('active');
+        let linkPath = link.getAttribute('href');
         
-        // Check if the link's href matches the current page
-        if (currentPath.endsWith(linkPath)) {
+        // Skip if it's a hash link (like # for Resources)
+        if (linkPath === '#') return;
+        
+        // Extract just the filename from the link path and normalize
+        let linkPage = linkPath.split('/').pop();
+        const linkPageLower = linkPage.toLowerCase();
+        const linkPageNoExt = linkPageLower.endsWith('.html') ? linkPageLower.slice(0, -5) : linkPageLower;
+        
+        // Check if the link matches the current page
+        const isMatch = 
+            // Exact match (case insensitive)
+            linkPageLower === currentPageLower ||
+            // Match without .html extension
+            linkPageNoExt === currentPageNoExt ||
+            // Match with different case
+            linkPageNoExt === currentPageNoExt.toLowerCase() ||
+            // Match with full path
+            linkPath === currentPath ||
+            // Match with ./ prefix
+            linkPath === `./${currentPage}` ||
+            linkPath === `./${currentPageLower}`;
+            
+        if (isMatch) {
             link.classList.add('active');
         }
     });

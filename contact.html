@@ -16,7 +16,35 @@
   <header>
     <!-- Navbar will be loaded here by main.js -->
   </header>
-
+  <div style="max-width: 900px; margin: 32px auto 0 auto; font-family: 'Manrope', Arial, sans-serif;">
+    <h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: white">Contact Us</h1>
+    <p style="font-size: 0.98rem; margin-bottom: 32px; color: #A3C299">
+      We'd love to hear from you! Whether you have questions, feedback, or just want to connect, please fill out the form below.
+    </p>
+    <form style="max-width: 600px;">
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 1rem; margin-bottom: 6px; color: white">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name"
+          style="width: 100%; padding: 16px 14px; border-radius: 12px; border: none; font-size: 1rem; box-sizing: border-box; background-color: #2E4229; color: #A3C299">
+      </div>
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 1rem; margin-bottom: 6px; color: white">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email"
+          style="width: 100%; padding: 16px 14px; border-radius: 12px; border: none; font-size: 1rem; box-sizing: border-box; background-color: #2E4229;  color: #A3C299">
+      </div>
+      <div style="margin-bottom: 18px;">
+        <label for="message" style="display: block; font-size: 1rem; margin-bottom: 6px; color: white">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Enter your message here"
+          style="width: 100%; font-family: Manrope; padding: 16px 14px; border-radius: 12px; border: none; font-size: 1rem; resize: none; box-sizing: border-box; background-color: #2E4229;  color: #A3C299"></textarea>
+      </div>
+    </form>
+    <div style="display: flex; justify-content: flex-end; right: -120px;">
+      <button type="submit" onclick="alert('Thank you for your message! We will get back to you soon.'); return false;"
+        style="margin-top: 24px; padding: 9px 22px; border-radius: 22px; border: none; font-size: 1.0rem; font-weight: 600; cursor: pointer; color: #172112; background-color: #54D12B; transition: background-color 0.3s, transform 0.2s; ">
+        Submit
+      </button>
+    </div>
+  </div>
   </main>
     <div id="footer-placeholder"></div>
     <script src="js/main.js"></script>

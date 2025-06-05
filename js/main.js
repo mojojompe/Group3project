@@ -1,7 +1,7 @@
 
 function loadNavbar() {
     // Load navbar
-    fetch('../components/navbar.html')
+    fetch('components/navbar.html')
         .then(response => response.text())
         .then(html => {
             // Create a temporary container to hold the navbar HTML

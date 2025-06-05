@@ -180,7 +180,6 @@ body {
     box-sizing: border-box;
 }
 
-/* General section title styles */
 .section-title {
     font-family: 'Manrope', sans-serif;
     text-align: start;
@@ -191,7 +190,6 @@ body {
     color: #fff;
 }
 
-/* Specific style for Why Choose Us section title */
 .why-choose-us .section-title {
     padding-left: 0px;
 }

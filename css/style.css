@@ -216,6 +216,9 @@ p {
   padding-left: 16px;
   padding-right: 16px;
 }
+.team-member{
+  display: block;
+}
 @media (max-width: 900px) {
   .hero-content {
     flex-direction: column;

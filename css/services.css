@@ -180,6 +180,7 @@ body {
     box-sizing: border-box;
 }
 
+/* General section title styles */
 .section-title {
     font-family: 'Manrope', sans-serif;
     text-align: start;
@@ -188,6 +189,11 @@ body {
     font-weight: 700;
     margin-bottom: 40px;
     color: #fff;
+}
+
+/* Specific style for Why Choose Us section title */
+.why-choose-us .section-title {
+    padding-left: 0px;
 }
 
 .services-grid {
@@ -365,11 +371,31 @@ body {
 
 /* Ready Section */
 .ready-section {
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 60px 0;
     text-align: center;
+}
+
+.ready-cta {
+    margin-top: 30px;
+}
+
+.get-started-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #54D12B;
+    color: #172112;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid #54D12B;
+}
+
+.get-started-btn:hover {
+    background-color: transparent;
+    color: #54D12B;
 }
 
 .ready-section .container {
